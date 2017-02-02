@@ -14,7 +14,7 @@
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property NSArray <Receipt*> *receipts;
-@property NSArray *tags;
+@property NSArray <Tag*> *tags;
 @property NSMutableDictionary *tagsWithReceipts;
 @end
 
@@ -37,7 +37,14 @@
     for(Tag *tag in self.tags){
         NSFetchRequest *request = [Receipt fetchRequest];
         NSArray *receipts = [[self getContext] executeFetchRequest:request error:&error];
-        [self.tagsWithReceipts setValue:receipts forKey:tag.tagName];
+        
+        
+        if (error) {
+            NSLog(@"Handle error");
+        } else {
+            [self.tagsWithReceipts setValue:receipts forKey:tag.tagName];
+        }
+        
     }
 //    [self.tableView reloadData];
 }
@@ -70,7 +77,7 @@
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return self.tags[section];
+    return self.tags[section].tagName;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
