@@ -15,6 +15,8 @@
 		C84A30481E43958000B71500 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C84A30471E43958000B71500 /* Assets.xcassets */; };
 		C84A304B1E43958000B71500 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C84A30491E43958000B71500 /* LaunchScreen.storyboard */; };
 		C84A30541E43A05B00B71500 /* AddReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C84A30531E43A05B00B71500 /* AddReceiptViewController.m */; };
+		C84A30611E43BB9E00B71500 /* Tag+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = C84A305C1E43BB2500B71500 /* Tag+CoreDataProperties.m */; };
+		C84A30621E43BBA300B71500 /* Receipt+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = C84A30581E43BB2500B71500 /* Receipt+CoreDataProperties.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,14 @@
 		C84A304C1E43958000B71500 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C84A30521E43A05B00B71500 /* AddReceiptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddReceiptViewController.h; sourceTree = "<group>"; };
 		C84A30531E43A05B00B71500 /* AddReceiptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddReceiptViewController.m; sourceTree = "<group>"; };
+		C84A30551E43BB2500B71500 /* Receipt+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Receipt+CoreDataClass.h"; sourceTree = "<group>"; };
+		C84A30561E43BB2500B71500 /* Receipt+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Receipt+CoreDataClass.m"; sourceTree = "<group>"; };
+		C84A30571E43BB2500B71500 /* Receipt+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Receipt+CoreDataProperties.h"; sourceTree = "<group>"; };
+		C84A30581E43BB2500B71500 /* Receipt+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Receipt+CoreDataProperties.m"; sourceTree = "<group>"; };
+		C84A30591E43BB2500B71500 /* Tag+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tag+CoreDataClass.h"; sourceTree = "<group>"; };
+		C84A305A1E43BB2500B71500 /* Tag+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Tag+CoreDataClass.m"; sourceTree = "<group>"; };
+		C84A305B1E43BB2500B71500 /* Tag+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tag+CoreDataProperties.h"; sourceTree = "<group>"; };
+		C84A305C1E43BB2500B71500 /* Tag+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Tag+CoreDataProperties.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +57,14 @@
 		C84A302C1E43958000B71500 = {
 			isa = PBXGroup;
 			children = (
+				C84A30551E43BB2500B71500 /* Receipt+CoreDataClass.h */,
+				C84A30561E43BB2500B71500 /* Receipt+CoreDataClass.m */,
+				C84A30571E43BB2500B71500 /* Receipt+CoreDataProperties.h */,
+				C84A30581E43BB2500B71500 /* Receipt+CoreDataProperties.m */,
+				C84A30591E43BB2500B71500 /* Tag+CoreDataClass.h */,
+				C84A305A1E43BB2500B71500 /* Tag+CoreDataClass.m */,
+				C84A305B1E43BB2500B71500 /* Tag+CoreDataProperties.h */,
+				C84A305C1E43BB2500B71500 /* Tag+CoreDataProperties.m */,
 				C84A30371E43958000B71500 /* Receipts++ */,
 				C84A30361E43958000B71500 /* Products */,
 			);
@@ -161,7 +179,9 @@
 				C84A30461E43958000B71500 /* Receipts__.xcdatamodeld in Sources */,
 				C84A30541E43A05B00B71500 /* AddReceiptViewController.m in Sources */,
 				C84A30401E43958000B71500 /* ViewController.m in Sources */,
+				C84A30611E43BB9E00B71500 /* Tag+CoreDataProperties.m in Sources */,
 				C84A303D1E43958000B71500 /* AppDelegate.m in Sources */,
+				C84A30621E43BBA300B71500 /* Receipt+CoreDataProperties.m in Sources */,
 				C84A303A1E43958000B71500 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -25,6 +25,25 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="D9n-jc-Qzg">
                                 <rect key="frame" x="16" y="60" width="343" height="599"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="VHV-K4-CXM" style="IBUITableViewCellStyleDefault" id="Cvo-RS-DYV">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cvo-RS-DYV" id="MGR-bU-jD4">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VHV-K4-CXM">
+                                                    <rect key="frame" x="15" y="0.0" width="313" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="Mut-Ss-fvh"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="7pd-8l-Udd"/>
@@ -53,6 +72,9 @@
                             <constraint firstItem="03P-vu-3gM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wdE-R5-wEp"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="D9n-jc-Qzg" id="u0a-1W-Mok"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -138,22 +160,43 @@
                                     <outlet property="delegate" destination="rUN-8u-ahS" id="ySj-mf-7YY"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKU-Z5-pfN">
+                                <rect key="frame" x="16" y="617" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelAdd:" destination="rUN-8u-ahS" eventType="touchUpInside" id="z9l-XT-lwp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJZ-Tn-eDK">
+                                <rect key="frame" x="325" y="617" width="34" height="30"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveReceipt:" destination="rUN-8u-ahS" eventType="touchUpInside" id="Isi-id-zPQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.5957260835" green="1" blue="0.6831089105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="yDL-oq-2eo" secondAttribute="leading" id="2Ov-Dc-IWr"/>
+                            <constraint firstItem="OCR-d2-ei6" firstAttribute="top" secondItem="gKU-Z5-pfN" secondAttribute="bottom" constant="20" id="7jT-GZ-VGg"/>
                             <constraint firstItem="B28-wR-7tA" firstAttribute="top" secondItem="yDL-oq-2eo" secondAttribute="bottom" constant="28" id="8Pm-J9-i7i"/>
                             <constraint firstAttribute="leadingMargin" secondItem="B28-wR-7tA" secondAttribute="leading" id="8Rf-wh-vPi"/>
                             <constraint firstItem="yDL-oq-2eo" firstAttribute="top" secondItem="enm-f4-8W9" secondAttribute="bottom" constant="8" id="Azg-UV-mOc"/>
                             <constraint firstItem="B28-wR-7tA" firstAttribute="width" secondItem="yDL-oq-2eo" secondAttribute="width" id="ZTV-Hy-gt5"/>
                             <constraint firstItem="nma-Bu-8ce" firstAttribute="top" secondItem="B28-wR-7tA" secondAttribute="bottom" constant="8" id="al4-Qm-Mhe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dJZ-Tn-eDK" secondAttribute="trailing" id="dga-Z1-8cU"/>
                             <constraint firstItem="FRy-No-q3b" firstAttribute="top" secondItem="enm-f4-8W9" secondAttribute="bottom" constant="8" id="fjF-G8-SlX"/>
+                            <constraint firstItem="OCR-d2-ei6" firstAttribute="top" secondItem="dJZ-Tn-eDK" secondAttribute="bottom" constant="20" id="iIk-mP-EWk"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="gKU-Z5-pfN" secondAttribute="leading" id="mZK-LW-Ldu"/>
                             <constraint firstItem="nma-Bu-8ce" firstAttribute="leading" secondItem="XBp-Jf-b9x" secondAttribute="leadingMargin" constant="-16" id="oX8-6E-jJ7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nma-Bu-8ce" secondAttribute="trailing" constant="-16" id="rg1-zj-MFo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FRy-No-q3b" secondAttribute="trailing" id="vCm-bQ-Oez"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="amount" destination="yDL-oq-2eo" id="Qnf-8e-2K9"/>
+                        <outlet property="datePicker" destination="nma-Bu-8ce" id="3MF-hd-rC0"/>
+                        <outlet property="note" destination="B28-wR-7tA" id="7ld-Ee-o4w"/>
                         <outlet property="tableView" destination="FRy-No-q3b" id="iI3-zY-C4L"/>
                     </connections>
                 </viewController>
