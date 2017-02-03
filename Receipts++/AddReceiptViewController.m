@@ -52,7 +52,12 @@
     receipt.note = note;
     receipt.timestamp = date;
     for (Tag *tag in self.selectedTags){
-        [tag.relationship setByAddingObject:receipt];
+        NSMutableSet *receipts = [tag.relationship mutableCopy];
+        [receipts addObject:receipt];
+        tag.relationship = [receipts copy];
+        NSError *error;
+        if(![tag.managedObjectContext save:&error])
+            NSLog(@"nope");
     }
     receipt.relationship = self.selectedTags;
     [[self appDelegate] saveContext];
@@ -78,10 +83,22 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    Tag *tag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag" inManagedObjectContext:[self getContext]];
-    tag.tagName = cell.textLabel.text;
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
-    [self.selectedTags addObject:tag];
+    NSFetchRequest *request = [Tag fetchRequest];
+    NSError *error;
+    bool added = NO;
+    NSArray *tags = [[self getContext] executeFetchRequest:request error:&error];
+    for (Tag *tag in tags){
+        if([tag.tagName isEqualToString:cell.textLabel.text]){
+            [self.selectedTags addObject:tag];
+            added = YES;
+        }
+    }
+    if(!added){
+        Tag *newTag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag" inManagedObjectContext:[self getContext]];
+        newTag.tagName = cell.textLabel.text;
+        [self.selectedTags addObject:newTag];
+    }
 }
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -90,6 +107,22 @@
     Tag *tag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag" inManagedObjectContext:[self getContext]];
     tag.tagName = cell.textLabel.text;
     [self.selectedTags removeObject:tag];
+    
+//    NSFetchRequest *request = [Tag fetchRequest];
+//    NSError *error;
+//    bool added = NO;
+//    NSArray *tags = [[self getContext] executeFetchRequest:request error:&error];
+//    for (Tag *tag in tags){
+//        if([tag.tagName isEqualToString:cell.textLabel.text]){
+//            [self.selectedTags addObject:tag];
+//            added = YES;
+//        }
+//    }
+//    if(!added){
+//        Tag *newTag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag" inManagedObjectContext:[self getContext]];
+//        newTag.tagName = cell.textLabel.text;
+//        [self.selectedTags addObject:newTag];
+//    }
 }
 
 #pragma mark - Core Data methods

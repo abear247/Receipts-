@@ -10,12 +10,13 @@
 #import "AppDelegate.h"
 #import "Receipt+CoreDataClass.h"
 #import "Tag+CoreDataClass.h"
+#import "TagObject.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property NSArray <Receipt*> *receipts;
+@property NSMutableArray <TagObject*> *tagObjectArray;
 @property NSArray <Tag*> *tags;
-@property NSMutableDictionary *tagsWithReceipts;
+//@property NSMutableDictionary *tagsWithReceipts;
 @end
 
 @implementation ViewController
@@ -33,20 +34,17 @@
     
     NSFetchRequest *request = [Tag fetchRequest];
     self.tags = [[self getContext] executeFetchRequest:request error:&error];
-    self.tagsWithReceipts = [NSMutableDictionary new];
+    self.tagObjectArray = [NSMutableArray new];
     for(Tag *tag in self.tags){
         NSFetchRequest *request = [Receipt fetchRequest];
+        [request setPredicate:[NSPredicate predicateWithFormat:@"relationship.tagName CONTAINS[cd] %@", tag.tagName]];
         NSArray *receipts = [[self getContext] executeFetchRequest:request error:&error];
-        
-        
-        if (error) {
-            NSLog(@"Handle error");
-        } else {
-            [self.tagsWithReceipts setValue:receipts forKey:tag.tagName];
-        }
-        
+        TagObject *tagObject = [TagObject new];
+        tagObject.receipts = receipts;
+        tagObject.name = tag.tagName;
+        [self.tagObjectArray addObject:tagObject];
     }
-//    [self.tableView reloadData];
+    [self.tableView reloadData];
 }
 
 
@@ -60,24 +58,22 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    Tag *tag = self.tags[indexPath.section];
-    NSSortDescriptor *sorter = [NSSortDescriptor sortDescriptorWithKey:@"tagName" ascending:YES];
-    NSSet *receipts = tag.relationship;
-    
-    cell.textLabel.text = self.receipts[indexPath.row].note;
+    TagObject *tagObject = self.tagObjectArray[indexPath.section];
+    Receipt *receipt = tagObject.receipts[indexPath.item];
+    cell.textLabel.text = receipt.note;
     return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.receipts.count;
+    return self.tagObjectArray[section].receipts.count;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return self.tags.count;
+    return self.tagObjectArray.count;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return self.tags[section].tagName;
+    return self.tagObjectArray[section].name;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

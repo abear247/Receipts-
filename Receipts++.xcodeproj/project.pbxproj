@@ -17,6 +17,7 @@
 		C84A30541E43A05B00B71500 /* AddReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C84A30531E43A05B00B71500 /* AddReceiptViewController.m */; };
 		C84A30611E43BB9E00B71500 /* Tag+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = C84A305C1E43BB2500B71500 /* Tag+CoreDataProperties.m */; };
 		C84A30621E43BBA300B71500 /* Receipt+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = C84A30581E43BB2500B71500 /* Receipt+CoreDataProperties.m */; };
+		C84A30651E4401FF00B71500 /* TagObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C84A30641E4401FF00B71500 /* TagObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		C84A305A1E43BB2500B71500 /* Tag+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Tag+CoreDataClass.m"; sourceTree = "<group>"; };
 		C84A305B1E43BB2500B71500 /* Tag+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tag+CoreDataProperties.h"; sourceTree = "<group>"; };
 		C84A305C1E43BB2500B71500 /* Tag+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Tag+CoreDataProperties.m"; sourceTree = "<group>"; };
+		C84A30631E4401FF00B71500 /* TagObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagObject.h; sourceTree = "<group>"; };
+		C84A30641E4401FF00B71500 /* TagObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 				C84A303C1E43958000B71500 /* AppDelegate.m */,
 				C84A303E1E43958000B71500 /* ViewController.h */,
 				C84A303F1E43958000B71500 /* ViewController.m */,
+				C84A30631E4401FF00B71500 /* TagObject.h */,
+				C84A30641E4401FF00B71500 /* TagObject.m */,
 				C84A30521E43A05B00B71500 /* AddReceiptViewController.h */,
 				C84A30531E43A05B00B71500 /* AddReceiptViewController.m */,
 				C84A30411E43958000B71500 /* Main.storyboard */,
@@ -177,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C84A30461E43958000B71500 /* Receipts__.xcdatamodeld in Sources */,
+				C84A30651E4401FF00B71500 /* TagObject.m in Sources */,
 				C84A30541E43A05B00B71500 /* AddReceiptViewController.m in Sources */,
 				C84A30401E43958000B71500 /* ViewController.m in Sources */,
 				C84A30611E43BB9E00B71500 /* Tag+CoreDataProperties.m in Sources */,
