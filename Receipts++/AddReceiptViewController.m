@@ -104,25 +104,17 @@
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    Tag *tag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag" inManagedObjectContext:[self getContext]];
-    tag.tagName = cell.textLabel.text;
-    [self.selectedTags removeObject:tag];
     
-//    NSFetchRequest *request = [Tag fetchRequest];
-//    NSError *error;
-//    bool added = NO;
-//    NSArray *tags = [[self getContext] executeFetchRequest:request error:&error];
-//    for (Tag *tag in tags){
-//        if([tag.tagName isEqualToString:cell.textLabel.text]){
-//            [self.selectedTags addObject:tag];
-//            added = YES;
-//        }
-//    }
-//    if(!added){
-//        Tag *newTag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag" inManagedObjectContext:[self getContext]];
-//        newTag.tagName = cell.textLabel.text;
-//        [self.selectedTags addObject:newTag];
-//    }
+    NSFetchRequest *request = [Tag fetchRequest];
+    NSError *error;
+    bool removed = NO;
+    NSArray *tags = [[self getContext] executeFetchRequest:request error:&error];
+    for (Tag *tag in tags){
+        if([tag.tagName isEqualToString:cell.textLabel.text]){
+            [self.selectedTags removeObject:tag];
+            removed = YES;
+        }
+    }
 }
 
 #pragma mark - Core Data methods
